@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<title>Wordle Word Look Up</title>
+</head>
+<body>
+	<div class="word">
+		<div class="word-lookup">
+			<div class="word-lookup-row row-hdr">
+				<h1>Wordle Word Lookup</h1>
+		  </div>
+			<div class="word-lookup-row row-body">
+				<div class="word-form">
+					<div class="row mb-4">
+					  <div class="col">
+					  	<div class="input-group">
+					  		<input 
+					  			type="text" 
+					  			name="startsWith" 
+					  			class="form-control" 
+					  			placeholder="Starts With" 
+					  			aria-label="Starts With" 
+					  			maxlength="1" />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="0" 
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Starts With" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					  <div class="col">
+					  	<div class="input-group">
+					  		<input 
+					  			type="text" 
+					  			name="endsWith" 
+					  			class="form-control" 
+					  			placeholder="Ends With" 
+					  			aria-label="Ends With" 
+					  			maxlength="1" />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="1"
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Ends With" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					</div>
+					<div class="row mb-4">
+					  <div class="col">
+					  	<div class="input-group">
+					    	<input 
+					    		type="text" 
+					    		name="contains" 
+					    		class="form-control" 
+					    		placeholder="Contains" 
+					    		aria-label="Contains" 
+					    		maxlength="5" />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="3"
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Contains" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					  <div class="col">
+					  	<div class="input-group">
+					    	<input 
+					    		type="text" 
+					    		name="length" 
+					    		class="form-control" 
+					    		value="5" 
+					    		placeholder="Length" 
+					    		aria-label="Length" 
+					    		disabled />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="4"
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Length" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					</div>
+					<div class="row">
+					  <div class="col">
+					  	<div class="input-group">
+					    	<input 
+					    		type="text" 
+					    		name="exclude" 
+					    		class="form-control" 
+					    		placeholder="Exclude" 
+					    		aria-label="Exclude" />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="5"
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Exclude" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					  <div class="col">
+					  	<div class="input-group">
+					    	<input
+					    		type="text" 
+					    		name="include" 
+					    		class="form-control" 
+					    		placeholder="Include" 
+					    		aria-label="Include" />
+					    	<span 
+					    		class="input-group-text" 
+					    		tabindex="6"
+					    		data-bs-toggle="popover" 
+					    		data-bs-trigger="focus"
+					    		title="Include" 
+					    		data-bs-content="Helper Text">
+					    		<i class="bi bi-question-circle"></i>
+					    	</span>	
+					  	</div>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="word-lookup-row row-ftr">
+				<button type="button" class="btn btn-primary">Search</button>
+			</div>
+		</div>
+	</div>	
+<script src="js/bootstrap.js"></script>
+<script src="js/fiveLetterWords.js"></script>
+<script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+html, 
+body {
+	height: 100%;	
+}
+
+body {
+	background-color: #edf2f4;
+	display: flex;
+	font-family: 'Lato', sans-serif;
+}
+
+h1 {
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 0;
+}
+
+/*h1:after {
+	content: '';
+	background-color: #ef233c;
+	display: block;
+	height: 3px;
+  margin: 5px auto 0;
+	width: 320px;
+}*/
+
+.word {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+	margin: 0 auto;
+	max-width: 42em;
+	padding: 1rem;	
+	width: 100%;
+}
+
+.word-lookup {
+	background-color: #8d99ae;
+	border: 1px solid #2b2d42;
+	border-radius: .4rem;
+	color: #fff;
+}
+
+.word-lookup-row {
+	padding: .9rem 1.5rem;
+}
+
+.word-lookup-row:not(:last-child) {
+	border-bottom: 1px solid #2b2d42;
+}
+
+.row-hdr {
+	background-color: #2b2d42;
+	color: #edf2f4;
+	font-size: 1.5rem;
+	font-weight: 700;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.row-body {
+	padding: 1.5rem;	
+}
+
+.row-ftr {
+	background-color: #2b2d42;
+	padding: 1.5rem;	
+}
+
+.btn-primary {
+	background-color: #ef233c;
+	border: 1px solid #ef233c;
+	color: #fff;
+	font-size: 1.1rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:active:focus {
+	background-color: #d90429;
+	border: 1px solid #d90429;
+  box-shadow: none;
+	color: #fff;
+  outline: 0;
+}
+
+.btn-secondary {
+	background-color: #edf2f4;
+	border: 1px solid #edf2f4;
+	color: #2b2d42;
+	text-transform: uppercase;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:active:focus {
+	background-color: rgba(237, 242, 244, .85);
+	border: 1px solid rgba(237, 242, 244, .85);
+	box-shadow: none;
+	color: #2b2d42;
+	outline: 0;
+}
+
+.form-control {
+	background-color: #edf2f4;
+	border-color: #2b2d42;
+	color: #2b2d42;
+	font-size: 1.1rem;
+	padding: 0.475rem 0.75rem;
+	text-transform: uppercase;
+}
+
+.form-control:focus {
+	color: #2b2d42;
+  background-color: #fbfeff;
+  border-color: #2b2d42;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-control:focus::placeholder {
+  color: transparent;
+}
+
+.input-group-text {
+	background-color: rgba(237, 242, 244, .8);
+	border-color: #2b2d42;	
+	color: #2b2d42;
+	cursor: pointer;
+}
