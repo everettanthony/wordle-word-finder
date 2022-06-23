@@ -79,7 +79,10 @@
 		const regex = new RegExp('^' + newVal + '$', 'i');
 		const filtered = fiveLetterWords.filter(word => regex.test(word));
 
-		if (!hasUnderscore) return;
+		if (!hasUnderscore) {
+			includeHandler(val);
+			return;
+		};
 	
 		displayResults(filtered);
 	}	
