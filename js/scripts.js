@@ -1,7 +1,7 @@
 (function() {
 	const wordForm = document.querySelector('.word-form');
 	const inputGroupText = document.querySelectorAll('.input-group-text');
-	const textInputs = document.querySelectorAll('.form-control');
+	const textInputs = document.querySelectorAll('.form-control:not([disabled])');
 	const btnSearch = document.querySelector('.btn-primary');
 	const btnReset = document.querySelector('.btn-secondary');
 	const results = document.querySelector('.word-lookup-results');
@@ -148,7 +148,7 @@
 			input.disabled = false;
 		});	
 
-		length.disabled = true;
+		tbLength.disabled = true;
 	}
 
 	function displayResults(arr) {
