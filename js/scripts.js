@@ -1,7 +1,12 @@
 (function() {
+	const wordForm = document.querySelector('.word-form');
 	const inputGroupText = document.querySelectorAll('.input-group-text');
 	const textInputs = document.querySelectorAll('.form-control');
 	const btnSearch = document.querySelector('.btn-primary');
+	const btnReset = document.querySelector('.btn-secondary');
+	const results = document.querySelector('.word-lookup-results');
+	const tbContains = document.querySelector('input[name="contains"]');
+	const tbLength = document.querySelector('input[name="length"]');
 
 	// Init Poppers
 	inputGroupText.forEach(text => {
@@ -13,6 +18,37 @@
   // Search Button Event Listener
 	btnSearch.addEventListener('click', (evt) => {
 		formValuesCheck();
+		wordForm.reset();
+		enableFormFields();
+	});
+
+	// Reset Button Event Listener
+	btnReset.addEventListener('click', (evt) => {
+		wordForm.reset();
+		enableFormFields();
+		results.classList.add('d-none');
+		results.innerHTML = '';
+	});
+
+	// Input Contains Change Listener 
+	tbContains.addEventListener('keyup', (event) => {
+		if (event.target.value.length === 1) {
+			disabledNonContainsFields();
+		}
+		else if (event.target.value.length === 0) {
+			enableFormFields();
+		}
+	});
+
+	// Submit Form on Enter Key Press
+	textInputs.forEach(input => {	
+		input.addEventListener('keypress', (event) => {
+			if (event.key === 'Enter') {
+				event.preventDefault();
+
+				if (event.target.value) formValuesCheck();
+			}
+		});
 	});
 
 	// Starts With
@@ -22,7 +58,7 @@
 
 		if (!val) return;
 
-		console.log('Starts With', filtered);
+		displayResults(filtered);
 	}
 
 	// Ends With
@@ -32,7 +68,7 @@
 
 		if (!val) return;
 
-		console.log('Ends With', filtered);
+		displayResults(filtered);
 	}
 
 	// Contains
@@ -45,7 +81,7 @@
 
 		if (!hasUnderscore) return;
 	
-		console.log('Contains', filtered);
+		displayResults(filtered);
 	}	
 
 	// Exclude
@@ -53,7 +89,8 @@
 		const strArr = val.split('').join(',');
 		const regex = new RegExp('^(?!.*[' + strArr + ']).*$', 'i');
 		const filtered = fiveLetterWords.filter(word => regex.test(word));
-		console.log('Excluded', filtered);
+
+		displayResults(filtered);
 	}	
 
 	// Include
@@ -63,13 +100,16 @@
 		strArr.map(char => valsArr.push(`(?=\\w*${char})`));
 		const regex = new RegExp(valsArr.join(''), 'i');
 		const filtered = fiveLetterWords.filter(word => regex.test(word));
-		console.log('Include', filtered);
+
+		displayResults(filtered);
 	}
 
 	// Iterate Input Values to Begin Filtering
 	function formValuesCheck() {
 		textInputs.forEach(tb => {
-			if (tb.value) initFilter(tb.getAttribute('name'), tb.value);
+			if (tb.value) {		
+				initFilter(tb.getAttribute('name'), tb.value);
+			}
 		});
 	}	
 
@@ -94,10 +134,36 @@
 		}
 	}
 
+	function disabledNonContainsFields() {
+		textInputs.forEach(input => {	
+			input.disabled = true;
+		});	
+
+		tbContains.disabled = false;
+		tbContains.focus();
+	}
+
+	function enableFormFields() {
+		textInputs.forEach(input => {	
+			input.disabled = false;
+		});	
+
+		length.disabled = true;
+	}
+
+	function displayResults(arr) {
+		results.innerHTML = '';
+
+		arr.map(item => {
+			const div = document.createElement('div');
+			div.classList.add('word-lookup-item');
+			div.innerText = item.toLowerCase();
+			results.append(div);
+		});
+
+		if (arr) results.classList.remove('d-none');
+	}
+
 	/* TODO 
-	/* - cover more form scenarios (Starts With AND Ends With)
-	/* - consider disabling other input fields while entering values and underscores in 'Contains' field
-	/* - finish up the copy in the helper pop ups
-	/* - restore the reset button
-	/* - display the matched words below the form container after running a search
+	/* - cover more form scenarios (Starts With AND Ends With) */
 })();

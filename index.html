@@ -14,11 +14,9 @@
 <body>
 	<div class="word">
 		<div class="word-lookup">
-			<div class="word-lookup-row row-hdr">
-				<h1>Wordle Word Lookup</h1>
-		  </div>
+
 			<div class="word-lookup-row row-body">
-				<div class="word-form">
+				<form class="word-form">
 					<div class="row mb-4">
 					  <div class="col">
 					  	<div class="input-group">
@@ -35,7 +33,7 @@
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
 					    		title="Starts With" 
-					    		data-bs-content="Helper Text">
+					    		data-bs-content="Words that start with given letter.">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
@@ -55,7 +53,7 @@
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
 					    		title="Ends With" 
-					    		data-bs-content="Helper Text">
+					    		data-bs-content="Words that end with given letter.">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
@@ -67,7 +65,7 @@
 					    	<input 
 					    		type="text" 
 					    		name="contains" 
-					    		class="form-control" 
+					    		class="form-control tb-contains" 
 					    		placeholder="Contains" 
 					    		aria-label="Contains" 
 					    		maxlength="5" />
@@ -77,7 +75,7 @@
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
 					    		title="Contains" 
-					    		data-bs-content="Helper Text">
+					    		data-bs-content="Word contains letter(s) in given sequence, using underscores as wildcard letters. Examples: T_E__, _B___, or G_OS_">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
@@ -97,8 +95,8 @@
 					    		tabindex="4"
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
-					    		title="Length" 
-					    		data-bs-content="Helper Text">
+					    		title="Word Length" 
+					    		data-bs-content="Search includes 5-letter words only.">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
@@ -119,7 +117,7 @@
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
 					    		title="Exclude" 
-					    		data-bs-content="Helper Text">
+					    		data-bs-content="Exclude given letters from word search. Example: DUW">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
@@ -138,18 +136,20 @@
 					    		data-bs-toggle="popover" 
 					    		data-bs-trigger="focus"
 					    		title="Include" 
-					    		data-bs-content="Helper Text">
+					    		data-bs-content="Include given letters from word search. Example: ATSD">
 					    		<i class="bi bi-question-circle"></i>
 					    	</span>	
 					  	</div>
 					  </div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<div class="word-lookup-row row-ftr">
+				<button type="button" class="btn btn-secondary me-2">Reset</button>
 				<button type="button" class="btn btn-primary">Search</button>
 			</div>
-		</div>
+		</div><!-- end .word-lookup -->
+		<div class="word-lookup-results d-none"></div>
 	</div>	
 <script src="js/bootstrap.js"></script>
 <script src="js/fiveLetterWords.js"></script>
