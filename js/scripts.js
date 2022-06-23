@@ -109,11 +109,16 @@
 
 	// Iterate Input Values to Begin Filtering
 	function formValuesCheck() {
+		let formIsDirty = false;
+
 		textInputs.forEach(tb => {
 			if (tb.value) {		
 				initFilter(tb.getAttribute('name'), tb.value);
+				formIsDirty = true;
 			}
 		});
+
+		if (!formIsDirty) displayFormError();
 	}	
 
 	// Run Filter Based on Input Name Value
@@ -168,6 +173,11 @@
 		});
 
 		if (arr) results.classList.remove('d-none');
+	}
+
+	function displayFormError() {
+		results.innerHTML = '<div class="error">No words found. Try again.</div>';
+		results.classList.remove('d-none');
 	}
 
 	/* TODO 
