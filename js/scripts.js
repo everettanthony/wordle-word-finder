@@ -154,9 +154,12 @@
 	function displayResults(arr) {
 		results.innerHTML = '';
 
+		if (!arr.length) results.innerHTML = '<div class="error">No words found. Try again.</div>';
+
 		arr.map(item => {
 			const div = document.createElement('div');
 			div.classList.add('word-lookup-item');
+			
 			div.innerText = item.toLowerCase();
 			results.append(div);
 		});
