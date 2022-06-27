@@ -88,12 +88,14 @@
 		const strArr = val.split('');
 		strArr.map(char => valsArr.push(`(?=\\w*${char})`));
 		const regex = strArr ? valsArr.join('') : '';
-		filtersObj.include = regex;
+		filtersObj.includeVal = regex;
 	}
 
 	// Iterate Input Values to Begin Filtering
 	function formValuesCheck() {
 		let formIsDirty = false;
+
+
 
 		textInputs.forEach(tb => {
 			if (tb.value) {		
@@ -166,11 +168,11 @@
 
 	function validateFilters() {
 		const filtered = fiveLetterWords
-			.filter(word => word.match(filtersObj.startsWith))
-			.filter(word => word.match(filtersObj.endsWith))
-			.filter(word => word.match(filtersObj.containsVal))
-			.filter(word => word.match(filtersObj.excludeVal))
-			.filter(word => word.match(filtersObj.includeVal));
+			.filter(word => word.toLowerCase().match(filtersObj.startsWith))
+			.filter(word => word.toLowerCase().match(filtersObj.endsWith))
+			.filter(word => word.toLowerCase().match(filtersObj.containsVal))
+			.filter(word => word.toLowerCase().match(filtersObj.excludeVal))
+			.filter(word => word.toLowerCase().match(filtersObj.includeVal));
 
 		displayResults(filtered);
 	}
