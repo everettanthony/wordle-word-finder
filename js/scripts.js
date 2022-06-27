@@ -27,13 +27,13 @@
 	btnSearch.addEventListener('click', (evt) => {
 		formValuesCheck();
 		validateFilters();
-		resetFilters();
+		resetFiltersObj();
 	});
 
 	// Reset Button Event Listener
 	btnReset.addEventListener('click', (evt) => {
 		wordForm.reset();
-		resetFilters();
+		resetFiltersObj();
 		results.classList.add('d-none');
 		results.innerHTML = '';
 	});
@@ -49,6 +49,10 @@
 		});
 	});
 
+	/************
+	The Filters
+	************/
+	
 	// Starts With
 	function startsWithHandler(val) {
 		const regex = val ? `^${val}` : '';
@@ -95,8 +99,6 @@
 	function formValuesCheck() {
 		let formIsDirty = false;
 
-
-
 		textInputs.forEach(tb => {
 			if (tb.value) {		
 				initFilter(tb.getAttribute('name'), tb.value);
@@ -128,23 +130,7 @@
 		}
 	}
 
-	function disabledNonContainsFields() {
-		textInputs.forEach(input => {	
-			input.disabled = true;
-		});	
-
-		tbContains.disabled = false;
-		tbContains.focus();
-	}
-
-	function enableFormFields() {
-		textInputs.forEach(input => {	
-			input.disabled = false;
-		});	
-
-		tbLength.disabled = true;
-	}
-
+	// Display the filtered results below the form
 	function displayResults(arr) {
 		results.innerHTML = '';
 
@@ -161,11 +147,13 @@
 		if (arr) results.classList.remove('d-none');
 	}
 
+	// Error handling message
 	function displayFormError() {
 		results.innerHTML = '<div class="error">No words found. Try again.</div>';
 		results.classList.remove('d-none');
 	}
 
+	// Cycle through the filters to find matches based on user input
 	function validateFilters() {
 		const filtered = fiveLetterWords
 			.filter(word => word.toLowerCase().match(filtersObj.startsWith))
@@ -177,7 +165,8 @@
 		displayResults(filtered);
 	}
 	
-	function resetFilters() {
+	// Rest the filters object
+	function resetFiltersObj() {
 		filtersObj = {
 			startsWith: '',
 			endsWith: '',
