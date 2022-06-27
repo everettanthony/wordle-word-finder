@@ -54,8 +54,8 @@ h1 {
 }
 
 .row-ftr {
+	align-items: flex-end;
 	display: flex;
-	justify-content: flex-end;
 	padding: 1rem 1.5rem;	
 }
 
@@ -172,4 +172,12 @@ h1 {
 
 .error {
 	padding: .5rem 1rem;	
+}
+
+.word-lookup-btns {
+	margin-left: auto;
+}
+
+.word-lookup-count {
+	color: #2b2d42;
 }

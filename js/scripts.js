@@ -4,6 +4,7 @@
 	const textInputs = document.querySelectorAll('.form-control:not([disabled])');
 	const btnSearch = document.querySelector('.btn-primary');
 	const btnReset = document.querySelector('.btn-secondary');
+	const wordCount = document.querySelector('.word-lookup-count span');
 	const results = document.querySelector('.word-lookup-results');
 	const tbContains = document.querySelector('input[name="contains"]');
 	const tbLength = document.querySelector('input[name="length"]');
@@ -36,6 +37,8 @@
 		resetFiltersObj();
 		results.classList.add('d-none');
 		results.innerHTML = '';
+		wordCount.textContent = '0';
+		wordCount.parentElement.classList.add('d-none');
 	});
 
 	// Submit Form on Enter Key Press
@@ -161,6 +164,9 @@
 			.filter(word => word.toLowerCase().match(filtersObj.containsVal))
 			.filter(word => word.toLowerCase().match(filtersObj.excludeVal))
 			.filter(word => word.toLowerCase().match(filtersObj.includeVal));
+
+		wordCount.textContent = filtered.length;
+		wordCount.parentElement.classList.remove('d-none');
 
 		displayResults(filtered);
 	}
