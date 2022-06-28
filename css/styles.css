@@ -108,6 +108,7 @@ h1 {
 	border-color: #2b2d42;
 	color: #2b2d42;
 	font-size: 1.1rem;
+	overflow: hidden;
 	padding: 0.475rem 0.75rem;
 	text-transform: uppercase;
 }
@@ -180,4 +181,9 @@ h1 {
 
 .word-lookup-count {
 	color: #2b2d42;
+}
+
+.icon-close {
+	border-bottom-right-radius: 0.375rem !important;
+	border-top-right-radius: 0.375rem !important;
 }

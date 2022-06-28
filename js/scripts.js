@@ -1,6 +1,7 @@
 (function() {
 	const wordForm = document.querySelector('.word-form');
 	const inputGroupText = document.querySelectorAll('.input-group-text');
+	const iconClose = document.querySelectorAll('.icon-close');
 	const textInputs = document.querySelectorAll('.form-control:not([disabled])');
 	const btnSearch = document.querySelector('.btn-primary');
 	const btnReset = document.querySelector('.btn-secondary');
@@ -39,6 +40,15 @@
 		results.innerHTML = '';
 		wordCount.textContent = '0';
 		wordCount.parentElement.classList.add('d-none');
+
+		textInputs.forEach(input => {	
+			const helper = input.parentElement.querySelector('.icon-helper');
+			const close = input.parentElement.querySelector('.icon-close');
+
+			input.classList.remove('is-dirty');
+			helper.classList.remove('d-none');
+			close.classList.add('d-none');
+		});
 	});
 
 	// Submit Form on Enter Key Press
@@ -49,6 +59,39 @@
 
 				if (event.target.value) formValuesCheck();
 			}
+		});
+	});
+
+	// Display Close Icon When Text Entered
+	textInputs.forEach(input => {	
+		const helper = input.parentElement.querySelector('.icon-helper');
+		const close = input.parentElement.querySelector('.icon-close');
+
+		input.addEventListener('keyup', (event) => {
+			if (event.target.value.length > 0 && 
+				!event.target.classList.contains('is-dirty')) {
+				event.target.classList.add('is-dirty');
+				helper.classList.add('d-none');
+				close.classList.remove('d-none');
+				console.log('typing');
+			}
+			else if (event.target.value.length === 0) {
+				event.target.classList.remove('is-dirty');
+				helper.classList.remove('d-none');
+				close.classList.add('d-none');
+			}
+		});
+	});
+
+	// Input Close Icon Button Clears Text Field
+	iconClose.forEach(icon => {	
+		icon.addEventListener('click', (event) => {
+			const textBox = event.target.offsetParent.querySelector('.form-control');
+			const helper = event.target.offsetParent.querySelector('.icon-helper');
+			textBox.value = '';
+			textBox.classList.remove('is-dirty');
+			icon.classList.add('d-none');
+			helper.classList.remove('d-none');
 		});
 	});
 
