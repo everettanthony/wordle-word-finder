@@ -21,7 +21,8 @@
 	// Init Poppers
 	inputGroupText.forEach(text => {
 		new bootstrap.Popover(text, {
-			trigger: 'focus'
+			trigger: 'hover',
+			delay: { 'show': 250 }
 		});
 	});
 
