@@ -101,7 +101,8 @@
 	
 	// Starts With
 	function startsWithHandler(val) {
-		const regex = val ? `^${val}` : '';
+		const startsReg = new RegExp('^' + val, 'i');
+		const regex = val ? startsReg : '';
 		filtersObj.startsWith = regex;
 	}
 
