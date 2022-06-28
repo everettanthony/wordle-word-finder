@@ -74,7 +74,6 @@
 				event.target.classList.add('is-dirty');
 				helper.classList.add('d-none');
 				close.classList.remove('d-none');
-				console.log('typing');
 			}
 			else if (event.target.value.length === 0) {
 				event.target.classList.remove('is-dirty');
