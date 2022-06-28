@@ -108,7 +108,8 @@
 
 	// Ends With
 	function endsWithHandler(val) {
-		const regex = val ? `${val}$` : '';
+		const endsReg = new RegExp(val + '$', 'i');
+		const regex = val ? endsReg : '';
 		filtersObj.endsWith = regex;
 	}
 
@@ -116,7 +117,8 @@
 	function containsHandler(val) {
 		const regUnderscore = new RegExp('_+', 'gi');
 		const hasUnderscore = regUnderscore.test(val);
-		const regex = val ? `^${val.replaceAll('_', '.')}$` : '';
+		const containsReg = new RegExp('^' + val.replaceAll('_', '.') + '$', 'i');
+		const regex = val ? containsReg : '';
 
 		if (!hasUnderscore) {
 			includeHandler(val);
@@ -129,7 +131,8 @@
 	// Exclude
 	function excludeHandler(val) {
 		const strArr = val.split('').join(',');
-		const regex = strArr ? `^(?!.*[${strArr}]).*$` : '';
+		const excludeReg = new RegExp('^(?!.*[' + strArr + ']).*$', 'i');
+		const regex = strArr ? excludeReg : '';
 		filtersObj.excludeVal = regex;
 	}	
 
@@ -138,7 +141,8 @@
 		const valsArr = [];
 		const strArr = val.split('');
 		strArr.map(char => valsArr.push(`(?=\\w*${char})`));
-		const regex = strArr ? valsArr.join('') : '';
+		const includeReg = new RegExp(valsArr.join(''), 'i');
+		const regex = strArr ? includeReg : '';
 		filtersObj.includeVal = regex;
 	}
 
